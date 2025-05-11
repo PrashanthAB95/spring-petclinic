@@ -47,11 +47,11 @@ spec:
           livenessProbe:
             httpGet:
               path: /livez
-              port: http
+              port: 8081
           readinessProbe:
             httpGet:
               path: /readyz
-              port: http
+              port: 8081
           volumeMounts:
             - mountPath: /bindings/secret
               name: binding
