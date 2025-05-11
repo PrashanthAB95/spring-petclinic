@@ -7,7 +7,7 @@ spec:
   type: NodePort
   ports:
     - port: 80
-      targetPort: 8081
+      targetPort: 8080   
   selector:
     app: petclinic
 
@@ -43,15 +43,19 @@ spec:
                 }
           ports:
             - name: http
-              containerPort: 8080
+              containerPort: 8080   
           livenessProbe:
             httpGet:
               path: /livez
-              port: 8081
+              port: 8080          
+            initialDelaySeconds: 30
+            periodSeconds: 10
           readinessProbe:
             httpGet:
               path: /readyz
-              port: 8081
+              port: 8080           
+            initialDelaySeconds: 30
+            periodSeconds: 10
           volumeMounts:
             - mountPath: /bindings/secret
               name: binding
